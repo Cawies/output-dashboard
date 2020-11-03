@@ -6,7 +6,7 @@ from dash.dependencies import Input, Output
 
 # Internal modules
 from config import config
-from pages import (overview, pageOne)
+from pages import (pageOne, pageTwo, pageThree)
 from config.data_management import load_excel
 from graphs import graphs
 
@@ -29,10 +29,19 @@ app.layout = html.Div(
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def display_page(pathname):
     print(pathname)
-    if pathname == "/report/pageOne":
-        return pageOne.create_layout(app,df)
+    if pathname == "/report/pageTwo":
+        return pageTwo.create_layout(app, 
+                                     df, 
+                                     graphs = [
+                                         {'Target': graphs.barchart(df,'Target')},
+                                         {'Rooms': graphs.barchart(df, 'rooms')},
+                                         {'Years of Education': graphs.barchart(df, 'escolari')},
+                                         {'Overcrowding Index': graphs.linechart(dataframe=df, variable='age-min', group_variable='Target')}
+                                         ])
+    elif pathname == "/report/pageThree":
+        return pageThree.create_layout(app,df)
     else:
-        return overview.create_layout(app)
+        return pageOne.create_layout(app)
 
 
 

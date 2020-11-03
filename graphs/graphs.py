@@ -25,8 +25,8 @@ def barchart(dataframe, variable, group_variable=None, layout=STANDARD_GRAPH_LAY
         for group in list(dataframe[group_variable].unique()):
             data.append(
                 go.Bar(
-                    x = dataframe[dataframe[group_variable]==group][variable].value_counts(normalize=True).index,
-                    y = dataframe[dataframe[group_variable]==group][variable].value_counts(normalize=True).values,
+                    x = dataframe[dataframe[group_variable]==group][variable].value_counts(normalize=True).sort_index().index,
+                    y = dataframe[dataframe[group_variable]==group][variable].value_counts(normalize=True).sort_index().values,
 
                     marker = {
                         'color': COLORS[group],
@@ -40,8 +40,8 @@ def barchart(dataframe, variable, group_variable=None, layout=STANDARD_GRAPH_LAY
     else: 
         legend = False
         data = go.Bar(
-                    x = dataframe[variable].value_counts(normalize=True).index,
-                    y = dataframe[variable].value_counts(normalize=True).values,
+                    x = dataframe[variable].value_counts(normalize=True).sort_index().index,
+                    y = dataframe[variable].value_counts(normalize=True).sort_index().values,
 
                     marker = {
                         'color': COLORS[0],
@@ -63,7 +63,7 @@ def linechart(dataframe, variable, group_variable=None, layout=STANDARD_LINEGRAP
     
     if group_variable!=None:
         legend = True
-        for group in list(data[group_variable].unique()):
+        for group in list(dataframe[group_variable].unique()):
             data.append(
                 go.Scatter(
                     x = dataframe[dataframe[group_variable]==group][variable].value_counts().sort_index().index,

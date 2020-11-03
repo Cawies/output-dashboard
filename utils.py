@@ -47,37 +47,37 @@ def get_menu():
         [
             dcc.Link(
                 "PageOne",
-                href="/report/overview",
+                href="/report/pageOne",
                 className="tab first",
             ),
             dcc.Link(
                 "PageTwo",
-                href="/report/pageOne",
-                className="tab",
-            ),
-            dcc.Link(
-                "PageThree",
                 href="/report/pageTwo",
                 className="tab",
             ),
             dcc.Link(
+                "PageThree",
+                href="/report/pageThree",
+                className="tab",
+            ),
+            dcc.Link(
                 "PageFour", 
-                href="/report/pageThree", 
+                href="/report/pageFour", 
                 className="tab"
             ),
             dcc.Link(
                 "PageFive",
-                href="/report/pageFour",
-                className="tab",
-            ),
-            dcc.Link(
-                "PageSix",
                 href="/report/pageFive",
                 className="tab",
             ),
             dcc.Link(
-                "PageSeven",
+                "PageSix",
                 href="/report/pageSix",
+                className="tab",
+            ),
+            dcc.Link(
+                "PageSeven",
+                href="/report/pageSeven",
                 className="tab",
             )
         ],
