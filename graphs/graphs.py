@@ -10,22 +10,7 @@ from plotly.subplots import make_subplots
 
 # Internal modules
 from config import config
-from graphs.layouts import STANDARD_GRAPH_LAYOUT
-
-
-def StandardGraph(title, id, figure):
-    return html.Div(
-        [
-            html.H6(
-                [title], className="subtitle padded"),
-                dcc.Graph(
-                    id = id,
-                    figure = figure)
-        ],
-        className="six columns")
-
-
-#StandardGraph(title='Goat', id='graph-one', figure=graphs.barchart(data,'Target', 'roof'))
+from graphs.layouts import STANDARD_GRAPH_LAYOUT, STANDARD_LINEGRAPH_LAYOUT
 
 def barchart(dataframe, variable, group_variable=None, layout=STANDARD_GRAPH_LAYOUT):
     """
@@ -69,3 +54,51 @@ def barchart(dataframe, variable, group_variable=None, layout=STANDARD_GRAPH_LAY
     figure = go.Figure(data=data, layout=layout)
     
     return figure
+
+
+def linechart(dataframe, variable, group_variable=None, layout=STANDARD_LINEGRAPH_LAYOUT):
+    
+    COLORS = ['#76323F','#d4d1d3','#565656','#C09F80']
+    data = []
+    
+    if group_variable!=None:
+        legend = True
+        for group in list(data[group_variable].unique()):
+            data.append(
+                go.Scatter(
+                    x = dataframe[dataframe[group_variable]==group][variable].value_counts().sort_index().index,
+                    y = dataframe[dataframe[group_variable]==group][variable].value_counts().sort_index().values,
+                    line = {'color': COLORS[group], 'smoothing':1, 'shape': 'spline'},
+                    mode = 'lines',
+                    name = f"{group_variable} = {group}"
+        )
+            )
+    else: 
+        legend = False
+        data =  go.Scatter(
+            x = dataframe[variable].value_counts().sort_index().index,
+            y = dataframe[variable].value_counts().sort_index().values,
+            line = {'color': '#97151c', 'smoothing':1, 'shape': 'spline'},
+            mode = 'lines',
+            name = variable
+        )
+
+    
+    yaxis = {
+        'autorange': True,
+        'gridcolor': 'rgba(127, 127, 127, 0.2)',
+        'mirror': False,
+        'nticks': 4,
+        'showgrid': True,
+        'showline': True,
+        'ticklen': 5,
+        'ticks': 'outside',
+        'title': 'Label me!',
+        'type': 'linear',
+        'zeroline': False,
+        'zerolinewidth': 4
+    }
+    
+    fig = go.Figure(data=data, layout=layout)
+    
+    return fig
