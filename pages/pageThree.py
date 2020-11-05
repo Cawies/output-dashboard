@@ -9,7 +9,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 
 
-def create_layout(app, data):
+def create_layout(app, graphs, title):
     # Page layouts
     return html.Div(
         [
@@ -22,7 +22,7 @@ def create_layout(app, data):
                         [
                             html.Div(
                                 [
-                                    html.Div(html.H5("Associations", style={"padding-left": "10px"}), className="inner-product2"),
+                                    html.Div(html.H5(title, style={"padding-left": "10px"}), className="inner-product2"),
                                     html.Br([]),
                                     html.P(load_document(config.TEXT_FILE),
                                         style={"color": "#000000"},
@@ -40,11 +40,11 @@ def create_layout(app, data):
                             html.Div(
                                 [
                                     html.H6(
-                                        ["Title"], className="subtitle padded"
+                                        [list(graphs[0].keys())[0]], className="subtitle padded"
                                     ),
                                     dcc.Graph(
                                         id = 'graph-one-p1',
-                                        figure = graphs.barchart(data,'Target', 'roof')
+                                        figure = list(graphs[0].values())[0]
                                         )
                                 ],
                                 className="six columns",
@@ -52,12 +52,12 @@ def create_layout(app, data):
                             html.Div(
                                 [
                                     html.H6(
-                                        "Title",
+                                        list(graphs[1].keys())[0],
                                         className="subtitle padded",
                                     ),
                                     dcc.Graph(
                                         id='graph-two-p1',
-                                        figure = graphs.barchart(data,'Target', 'roof')
+                                        figure = list(graphs[1].values())[0]
                                         )
                                 ],
                                 className="six columns",
@@ -72,12 +72,12 @@ def create_layout(app, data):
                             html.Div(
                                 [
                                     html.H6(
-                                        ["Title"], 
+                                        list(graphs[2].keys())[0], 
                                         className="subtitle padded"
                                     ),
                                     dcc.Graph(
                                         id = 'graph-three-p1',
-                                        figure = graphs.barchart(data,'Target', 'roof')
+                                        figure = list(graphs[2].values())[0]
                                         )
                                 ],
                                 className="six columns",
@@ -85,12 +85,12 @@ def create_layout(app, data):
                             html.Div(
                                 [
                                     html.H6(
-                                        "Title",
+                                        list(graphs[3].keys())[0],
                                         className="subtitle padded",
                                     ),
                                     dcc.Graph(
                                         id = 'graph-four-p1',
-                                        figure = graphs.barchart(data,'Target', 'roof')
+                                        figure = list(graphs[3].values())[0]
                                         )
                                 ],
                                 className="six columns",

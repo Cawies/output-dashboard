@@ -102,3 +102,36 @@ STANDARD_LINEGRAPH_LAYOUT = go.Layout(
             'type': 'linear',
         }
     )
+
+STANDARD_DISTPLOT_LAYOUT = go.Layout(
+    template = 'plotly_white',
+    autosize = True,
+    title = '',
+    font = {
+        'family': 'Raleway',
+        'size': 10
+    },
+    height = 200,
+    width = 340,
+    hovermode = 'closest',
+    legend = {
+        'x': -0.0277108433735,
+        'y': -0.142606516291,
+        'orientation': 'h'
+    },
+    margin = {
+        'r': 20,
+        't': 20,
+        'b': 20,
+        'l': 50
+    },
+    showlegend = True,
+    xaxis = {
+        'autorange': True,
+        'linecolor': 'rgb(0, 0, 0)',
+        'linewidth': 1,
+        'showgrid': False,
+        'showline': True,
+        'title': '',
+        'type': 'linear',
+    })
