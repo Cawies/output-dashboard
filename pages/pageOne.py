@@ -114,7 +114,7 @@ def create_layout(app):
                                     html.Div(
                                         [
                                             html.P("List all models fitted and optimized here."),
-                                            html.P("Describe each model and its assumptions.Logistic models are linear models and are therefore subject to the common assumptions of:")
+                                            html.P("Describe each model and its assumptions.")
 
                                         ],
                                         style={"color": "#7a7a7a"},
