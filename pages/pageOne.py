@@ -80,7 +80,7 @@ def create_layout(app):
                                             html.P('3. Identify groups of correlated variables: remove least predictive variable from group as evaluated by group specific decision tree model.'),
                                             html.P('4. Identify most informative variables by entropy.'),
                                             html.P('4. Identify most predictive variables as evaluated by decicion tree based Receiver Operating Characteristic (ROC) curve'),
-                                            html.P("REDUCED AGGREGATED DATA DIMENSIONALITY: 23 columns (incl. Target), 2974 rows")
+                                            html.P("REDUCED AGGREGATED DATA DIMENSIONALITY: 13 columns (incl. Target), 2974 rows")
                                         ],
                                         style={"color": "#7a7a7a"},
                                     ),
@@ -109,20 +109,12 @@ def create_layout(app):
                         [
                             html.Div(
                                 [
-                                    html.H6("Model: Multinomial Logistic Regression", className="subtitle padded"),
+                                    html.H6("Fitted Models", className="subtitle padded"),
                                     html.Br([]),
                                     html.Div(
                                         [
-                                            html.P("The multinomial logistic regression is an extension of the binary logistic regression and serves as a good baseline model for multiclass classification."),
-                                            html.P("\
-                                                Similarly to One-versus-Rest (OVR) approaches, a series of models are fitted to the data with the difference that one class outcome \
-                                                is consistently used as a baseline reference category for the other class outcomes. As such it fits K-1 number of models with their corresponding coefficients. \
-                                                While the poverty level outcome is ordinal by nature, the multinomial model treats each class outcome as categorically unrelated."),
-                                            html.P("Logistic models are linear models and are therefore subject to the common assumptions of:"),
-                                            html.P('1. Additivity and Linearity'),
-                                            html.P('2. Normality'),
-                                            html.P('3. Homoskedasticity (homogeneity of variance)'),
-                                            html.P('4. Independence')
+                                            html.P("List all models fitted and optimized here."),
+                                            html.P("Describe each model and its assumptions.Logistic models are linear models and are therefore subject to the common assumptions of:")
 
                                         ],
                                         style={"color": "#7a7a7a"},

@@ -187,6 +187,40 @@ def create_layout(app, graphs, title):
                                 ],
                                 className="six columns",
                             ),
+                            
+                        ],
+                        className="row",
+                        style={"margin-bottom": "35px"},
+                    ),
+                    html.Div(
+                        [
+                            html.Div(
+                                [
+                                    html.H6(
+                                        list(graphs[8].keys())[0], 
+                                        className="subtitle padded"
+                                    ),
+                                    dcc.Graph(
+                                        id = 'graph-five-p2',
+                                        figure = list(graphs[8].values())[0]
+                                        )
+                                ],
+                                className="six columns",
+                            ),
+                                 html.Div(
+                                [
+                                    html.H6(
+                                        list(graphs[9].keys())[0],
+                                        className="subtitle padded",
+                                    ),
+                                    dcc.Graph(
+                                        id = 'graph-six-p2',
+                                        figure = list(graphs[9].values())[0]
+                                        )
+                                ],
+                                className="six columns",
+                            ),
+                            
                         ],
                         className="row",
                         style={"margin-bottom": "35px"},

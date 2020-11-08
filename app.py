@@ -41,16 +41,24 @@ def display_page(pathname):
                                          {'Lowest Education in years': graphs.distplot(df,'escolari-min')},
                                          {'Highest Education in years': graphs.distplot(df, 'escolari-max')},
                                          {'Total Years of Education': graphs.distplot(df, 'escolari-sum')},
-                                         {'Years of Education Head of Household': graphs.distplot(dataframe=df, variable='escolari')}
+                                         {'Years of Education Head of Household': graphs.distplot(dataframe=df, variable='escolari')},
+                                         {'Youngest household member age': graphs.distplot(dataframe=df, variable='age-min')},
+                                         {'Household age variation': graphs.distplot(dataframe=df, variable='age-std')}
                                          ])
     elif pathname == "/report/pageThree":
         return pageThree.create_layout(app=app,
                                        title='Predictor by Target distributions',
-                                       graphs = [
-                                           {'Roof quality by Target': graphs.barchart(df,'roof', 'Target')},
-                                           {'Number of Rooms by Target': graphs.barchart(df, 'rooms', 'Target')},
-                                           {'Years of Education by Target': graphs.barchart(df, 'escolari', 'Target')},
-                                           {'Overcrowding Index by Target': graphs.linechart(dataframe=df, variable='age-min', group_variable='Target')}
+                                       graphs = [ 
+                                         {'Poverty Level': graphs.barchart(df,'Target')},
+                                         {'Number of Rooms': graphs.barchart(df, 'rooms', 'Target')},
+                                         {'Roof Quality': graphs.barchart(df, 'roof', 'Target')},
+                                         {'Overcrowding Index': graphs.distplot(dataframe=df, variable='overcrowding', group_variable='Target')},
+                                         {'Lowest Education in years': graphs.distplot(df,'escolari-min', 'Target')},
+                                         {'Highest Education in years': graphs.distplot(df, 'escolari-max', 'Target')},
+                                         {'Total Years of Education': graphs.distplot(df, 'escolari-sum', 'Target')},
+                                         {'Years of Education Head of Household': graphs.distplot(dataframe=df, variable='escolari', group_variable='Target')},
+                                         {'Youngest household member age': graphs.distplot(dataframe=df, variable='age-min', group_variable= 'Target')},
+                                         {'Household age variation': graphs.distplot(dataframe=df, variable='age-std', group_variable='Target')}
                                            ])
                                          
     else:

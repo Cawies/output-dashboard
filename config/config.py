@@ -4,6 +4,7 @@ import pathlib
 PACKAGE_ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATASET_DIR = f"{PACKAGE_ROOT}/data"
 
+REPORT_TITLE = 'Machine Learning Output Report'
 DATA_FILE = 'reduced_data.xlsx'
 GEOJSON_FILE = ''
 TEXT_FILE = 'description.docx'

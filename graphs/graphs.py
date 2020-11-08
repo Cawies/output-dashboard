@@ -110,7 +110,7 @@ def distplot(dataframe, variable, group_variable=None, layout=STANDARD_DISTPLOT_
     
     if group_variable==None:
         data.append(dataframe[variable].values)
-        figure = ff.create_distplot(data, [variable], show_hist=False, show_rug=False, colors=COLORS)
+        figure = ff.create_distplot(data, [variable], show_hist=True, show_rug=False, colors=COLORS)
     else:
         group_labels = []
         for group in list(dataframe[group_variable].unique()):

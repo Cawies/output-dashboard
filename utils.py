@@ -1,5 +1,9 @@
+# External libraries
 import dash_html_components as html
 import dash_core_components as dcc
+
+# Internal modules
+from config import config
 
 
 
@@ -28,7 +32,7 @@ def get_header(app):
             html.Div(
                 [
                     html.Div(
-                        [html.H5("General Report Prototype")],
+                        [html.H5(config.REPORT_TITLE)],
                         className="seven columns main-title",
                     ),
                 ],
