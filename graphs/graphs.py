@@ -125,3 +125,25 @@ def distplot(dataframe, variable, group_variable=None, layout=STANDARD_DISTPLOT_
 
     
     return figure
+
+def multivar_barchart(dataframe, category, variables, layout=STANDARD_GRAPH_LAYOUT):
+    COLORS = ['#76323F','#d4d1d3','#565656','#C09F80']
+    data = []
+    
+    for variable in range(len(variables)):
+        data.append(
+            go.Bar(
+                x = dataframe[category],
+                y = dataframe[variables[variable]],
+                                    marker = {
+                        'color': COLORS[variable],
+                        'line': {
+                            'color': 'rgb(255, 255, 255)',
+                            'width': 0.5}
+                    }
+            )
+        )
+    
+    figure = go.Figure(data=data, layout=layout)
+    
+    return figure
