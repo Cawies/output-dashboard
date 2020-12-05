@@ -10,7 +10,7 @@ from plotly.subplots import make_subplots
 
 # Internal modules
 from config import config
-from graphs.layouts import STANDARD_GRAPH_LAYOUT, STANDARD_LINEGRAPH_LAYOUT, STANDARD_DISTPLOT_LAYOUT
+from graphs.layouts import STANDARD_GRAPH_LAYOUT, STANDARD_LINEGRAPH_LAYOUT, STANDARD_DISTPLOT_LAYOUT, STANDARD_GRAPH_LAYOUT_WIDE, HEATMAP_LAYOUT
 
 def barchart(dataframe, variable, group_variable=None, layout=STANDARD_GRAPH_LAYOUT):
     """
@@ -126,7 +126,7 @@ def distplot(dataframe, variable, group_variable=None, layout=STANDARD_DISTPLOT_
     
     return figure
 
-def multivar_barchart(dataframe, category, variables, layout=STANDARD_GRAPH_LAYOUT):
+def multivar_barchart(dataframe, category, variables, layout=STANDARD_GRAPH_LAYOUT_WIDE):
     COLORS = ['#76323F','#d4d1d3','#565656','#C09F80']
     data = []
     
@@ -145,5 +145,16 @@ def multivar_barchart(dataframe, category, variables, layout=STANDARD_GRAPH_LAYO
         )
     
     figure = go.Figure(data=data, layout=layout)
+    
+    return figure
+
+
+def annotated_heatmap(data, layout=HEATMAP_LAYOUT):
+    COLORS = ['#D4D1D3','#76323F']
+    
+    x = ['Negative', 'Positive']
+    y = ['Positive','Negative']
+    figure = ff.create_annotated_heatmap(np.array(data)[::-1], colorscale=COLORS, x=x, y=y)
+    figure.update_layout(layout)
     
     return figure

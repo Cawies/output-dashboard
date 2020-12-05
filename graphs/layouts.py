@@ -112,7 +112,7 @@ STANDARD_DISTPLOT_LAYOUT = go.Layout(
         'size': 10
     },
     height = 200,
-    width = 340,
+    width = 330,
     hovermode = 'closest',
     legend = {
         'x': -0.0277108433735,
@@ -135,3 +135,78 @@ STANDARD_DISTPLOT_LAYOUT = go.Layout(
         'title': '',
         'type': 'linear',
     })
+
+STANDARD_GRAPH_LAYOUT_WIDE = go.Layout(
+    template = 'plotly_white',
+    autosize = False,
+    bargap = 0.35,
+    font = {
+        'family': 'Raleway',
+        'size': 10
+    },
+    height = 300,
+    legend = {
+        'x': -0.0228945952895,
+        'y': -0.189563896463,
+        'orientation': 'h',
+        'yanchor': 'top'
+    },
+    margin = {
+        'r': 0,
+        't': 20,
+        'b': 10,
+        'l': 10
+    },
+    showlegend = False,
+    title = '',
+    width = 700,
+
+    xaxis = {
+        'autorange': True,
+        'showline': True,
+        'title': '',
+        'type': 'category'
+    },
+    yaxis = {
+        'autorange': True,
+        'showgrid': True,
+        'showline': True,
+        'title': '',
+        'type': 'linear',
+        'zeroline': False
+    },
+    transition = {
+            'duration': 500,
+            'easing': 'cubic-in-out'
+        }
+)
+
+HEATMAP_LAYOUT = go.Layout(
+    template = 'plotly_white',
+    autosize = True,
+    font = {
+        'family': 'Raleway',
+        'size': 10
+    },
+    height = 200,
+    legend = {
+        'x': -0.0228945952895,
+        'y': -0.189563896463,
+        'orientation': 'h',
+        'yanchor': 'top'
+    },
+    margin = {
+        'r': 0,
+        't': 10,
+        'b': 5,
+        'l': 5
+    },
+    showlegend = False,
+    title = '',
+    width = 330,
+
+    transition = {
+            'duration': 500,
+            'easing': 'cubic-in-out'
+        }
+)

@@ -13,6 +13,7 @@ from graphs import graphs
 
 df = load_excel(file_name=config.DATA_FILE) 
 model_performance = load_excel(file_name='model_performances.xlsx')
+confusion_matrix = load_excel(file_name='confusion_matrix.xlsx')
 
 
 app = dash.Dash(
@@ -66,9 +67,9 @@ def display_page(pathname):
                                       title='Model Benchmarking',
                                       graphs = [
                                           {'model_benchmarks': graphs.multivar_barchart(model_performance, 'model', ['mean_train_acc', 'mean_test_acc', 'mean_train_acc_tuned','mean_test_acc_tuned'])},
-                                          {'model_benchmarks': graphs.multivar_barchart(model_performance, 'model', ['mean_train_acc', 'mean_test_acc', 'mean_train_acc_tuned','mean_test_acc_tuned'])},
-                                          {'model_benchmarks': graphs.multivar_barchart(model_performance, 'model', ['mean_train_acc', 'mean_test_acc', 'mean_train_acc_tuned','mean_test_acc_tuned'])},
-                                          {'model_benchmarks': graphs.multivar_barchart(model_performance, 'model', ['mean_train_acc', 'mean_test_acc', 'mean_train_acc_tuned','mean_test_acc_tuned'])}
+                                          {'X': graphs.distplot(dataframe=df, variable='age-std', group_variable='Target')},
+                                          {'Y': graphs.annotated_heatmap(confusion_matrix)},
+                                          {'Z': graphs.distplot(dataframe=df, variable='age-std', group_variable='Target')}
                                           
                                       ])
                                          
